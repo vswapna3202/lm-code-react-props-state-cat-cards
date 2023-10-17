@@ -85,7 +85,8 @@ function App() {
 			}			
 		]
 	);
-		
+	/* Add another cat if 12 cats are already added trying
+	useEffect and setCats */	
 	useEffect(() => {
         if (cats.length === 12) {
             const newCat = {
@@ -100,6 +101,7 @@ function App() {
 	
 	/*console.log("Our pretties 😻: ", cats);*/
 	const catsCount = cats.length;
+	/* console.log('Cats count ', catsCount); */
 	return (
 		<>
 			<Navbar />
