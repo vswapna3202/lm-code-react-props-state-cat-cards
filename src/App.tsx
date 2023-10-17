@@ -82,23 +82,31 @@ function App() {
 					 species: 'Tiny Cat',
 					 favFoods: ['milk'],
 					 birthYear: 2021,
-				 }
+				 },
+				 {
+					name: "Captain Catface",
+					species: "Sea Cattain",
+					favFoods: ["fish, rum"],
+					birthYear: 2016,
+				  }
 		 ]
 	);
-	console.log("Our pretties 😻: ", cats);
+	/*console.log("Our pretties 😻: ", cats);*/
+	const catsCount = cats.length;
 	return (
 		<>
 			<Navbar />
-			<Header />
+			<Header catsCount={catsCount}/>
 
 			<main>
 				<div className='cards__wrapper'>		  
-						{cats.map(cat => (
+						{cats.map((cat, index) => (
 							<CatCard 
 								name={cat.name}
 								species={cat.species}
 								favFoods={cat.favFoods}
 								birthYear={cat.birthYear}
+								catIndex={index}
 							/> 
 						))}						
 				</div>
