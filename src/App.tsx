@@ -4,9 +4,14 @@ import Header from './components/header';
 import Footer from './components/footer';
 import { useState, useEffect } from 'react';
 import Cat from './data/cat';
+import Dog from './data/dog';
+import dogs from './data/dog-data';
 import CatCard from './components/cat_card';
+import DogCard from './components/dog_card';
 
 function App() {
+	const[ dogsData, setDogs ] = useState<Array<Dog>>(dogs);
+	const dogsCount = dogs.length;
 
 	// JavaScript/TypeScript code can be inserted here!
 	const [ cats, setCats ] = useState<Array<Cat>>(
@@ -105,7 +110,7 @@ function App() {
 	return (
 		<>
 			<Navbar />
-			<Header catsCount={catsCount}/>
+			<Header catsCount={catsCount} dogsCount={dogsCount}/>
 
 			<main>
 				<div className='cards__wrapper'>		  
@@ -118,6 +123,16 @@ function App() {
 								catIndex={index}
 							/> 
 						))}						
+				</div>
+				<div className="cards_wrapper">
+					{dogsData.map((dog, index) => (
+						<DogCard key ={index}
+								 name ={dog.name}
+								 species={dog.species}
+								 favFoods={dog.favFoods}
+								 birthYear={dog.birthYear}
+						/>		 
+					))};
 				</div>				
 			</main>
 

@@ -10,7 +10,7 @@ const dogs: Array<Dog> = [
 	{
 		name: 'Doofus',
 		species: 'Doggo',
-		favFoods: ['porridge, dog food'],
+		favFoods: ['porridge', 'dog food'],
 		birthYear: 2010,
 	},
 	{
@@ -20,3 +20,5 @@ const dogs: Array<Dog> = [
 		birthYear: 2015,
 	},
 ];
+
+export default dogs;
