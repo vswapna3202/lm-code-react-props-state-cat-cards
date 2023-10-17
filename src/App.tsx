@@ -124,15 +124,10 @@ function App() {
 							/> 
 						))}						
 				</div>
-				<div className="cards_wrapper">
-					{dogsData.map((dog, index) => (
-						<DogCard key ={index}
-								 name ={dog.name}
-								 species={dog.species}
-								 favFoods={dog.favFoods}
-								 birthYear={dog.birthYear}
-						/>		 
-					))};
+				<div className="cards__wrapper">
+					{dogsData.map(dog => (
+						<DogCard dogObject={dog}/>		 
+					))}
 				</div>				
 			</main>
 
