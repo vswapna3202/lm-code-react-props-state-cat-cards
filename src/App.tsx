@@ -4,6 +4,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import { useState } from 'react';
 import Cat from './data/cat';
+import CatCard from './components/cat_card';
 
 function App() {
 
@@ -92,15 +93,14 @@ function App() {
 
 			<main>
 				<div className='cards__wrapper'>		  
-						{cats.map(cat => (		
-						  <div className="card" key="{cat.name}">					
-							<h3 className="card__text card__header">{cat.name}</h3>	
-							<img className="card__image" src="./img/cuteTabbyCats.jpg" alt="A cute tabby kitten"></img>
-							<p>Species:{cat.species}</p>
-							<p>Favourite Foods:{cat.favFoods.join(', ')}</p>
-							<p>Birth Year:{cat.birthYear}</p>	
-						  </div>								
-						))}							
+						{cats.map(cat => (
+							<CatCard 
+								name={cat.name}
+								species={cat.species}
+								favFoods={cat.favFoods}
+								birthYear={cat.birthYear}
+							/> 
+						))}						
 				</div>
 			</main>
 
