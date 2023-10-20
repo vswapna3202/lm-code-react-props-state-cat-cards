@@ -8,6 +8,7 @@ import Dog from './data/dog';
 import dogs from './data/dog-data';
 import CatCard from './components/cat_card';
 import DogCard from './components/dog_card';
+import CatForm from './components/cat_form';
 
 function App() {
 	const[ dogsData, setDogs ] = useState<Array<Dog>>(dogs);
@@ -91,8 +92,9 @@ function App() {
 		]
 	);
 	/* Add another cat if 12 cats are already added trying
-	useEffect and setCats */	
+	useEffect and setCats rather than adding it to cats[]*/	
 	useEffect(() => {
+		
         if (cats.length === 12) {
             const newCat = {
                 name: "Captain Catface",
@@ -104,18 +106,24 @@ function App() {
         }
     }, [cats]);
 	
+	/* Handle adding a new cat input from user */
+	const handleAddCat = (newCat: Cat) => {
+		setCats([...cats, newCat]);
+	};
 	/*console.log("Our pretties 😻: ", cats);*/
 	const catsCount = cats.length;
-	/* console.log('Cats count ', catsCount); */
+	console.log('Cats count ', catsCount); 
 	return (
 		<>
 			<Navbar />
 			<Header catsCount={catsCount} dogsCount={dogsCount}/>
 
 			<main>
+				<CatForm onAddCat={handleAddCat} />
 				<div className='cards__wrapper'>		  
 						{cats.map((cat, index) => (
 							<CatCard 
+								key={index}
 								name={cat.name}
 								species={cat.species}
 								favFoods={cat.favFoods}
@@ -125,8 +133,10 @@ function App() {
 						))}						
 				</div>
 				<div className="cards__wrapper">
-					{dogsData.map(dog => (
-						<DogCard dogObject={dog}/>		 
+					{dogsData.map((dog,index) => (
+						<DogCard 
+							key={index}
+							dogObject={dog}/>		 
 					))}
 				</div>				
 			</main>
